@@ -38,8 +38,8 @@ const getBannerStyle = computed(() => {
 })
 
 // 动态加载图片
-const getSrc = (url:string) => {
-    return new URL(url, import.meta.url).href
+const getSrc = (url: string) => {
+  return new URL(url, import.meta.url).href
 };
 // 定时自动滚动末尾会追加第一张图
 const timedImgs = computed(() => {
@@ -59,7 +59,7 @@ let left = ref(0)
 // 当前图片的index
 let nowIndex = ref(0)
 // 圆点滚动的定时器
-let timerBot: any 
+let timerBot: any
 // 图片滚动的定时器
 let timerImg
 // 获取下方圆点DOM，并设置初始圆点高亮状态
@@ -76,7 +76,7 @@ const runBot = () => {
     el.style.setProperty('background-color', '')
   });
   nowIndex.value = Math.floor(-left.value / props.width)
-  if(nowIndex.value === radios.length)  nowIndex.value = 0 
+  if (nowIndex.value === radios.length) nowIndex.value = 0
   if (nowIndex.value < radios.length) {
     radios[nowIndex.value].style.setProperty('background-color', 'rgba(255,255,255,0.7)')
   }
@@ -94,7 +94,7 @@ function runImg() {
 }
 
 
-/* 处理多种使用场景 */ 
+/* 处理多种使用场景 */
 
 
 // **** 一、定时切换
@@ -106,7 +106,7 @@ if (props.setTime) {
 // **** 二、侧方点击切换
 // 传入图片位置索引，来改变left
 const handleImgChange = (n: number) => {
-  left.value  = -(n * props.width)
+  left.value = -(n * props.width)
   imgList.value?.style.setProperty('margin-left', left.value + 'px')
 }
 // 点击上一张
@@ -124,7 +124,7 @@ const handleNext = () => {
 
 
 // **** 三、下方点击切换
-const handleBotClick = (index:number) => {  
+const handleBotClick = (index: number) => {
   nowIndex.value = index
   clearTimeout(timerBot)
   handleImgChange(nowIndex.value)
@@ -139,7 +139,8 @@ if (props.botClicked) {
 <template>
   <div class="banner" :style="getBannerStyle">
     <ul id="imgList" ref="imgList">
-      <li v-for="(img, index) in (props.setTime ? timedImgs : notTimedImgs)" :key="img"><img :src="getSrc(img)" alt=""></li>
+      <li v-for="(img, index) in (props.setTime ? timedImgs : notTimedImgs)" :key="img"><img :src="getSrc(img)" alt="">
+      </li>
     </ul>
     <div class="bot-radios" v-if="props.botClicked" ref="botRadios">
       <div class="bot-radio" v-for="(img, index) in notTimedImgs" :key="img" @click="handleBotClick(index)"></div>
@@ -150,6 +151,14 @@ if (props.botClicked) {
 </template>
 
 <style scoped lang="scss">
+$radio-border-color: rgba(207, 208, 141, 0.8);
+$prev-hover-color: rgba(255, 255, 255, 0.8);
+$prev-default-color: rgba(0, 0, 0, 0.2);
+$prev-font-size: 18px;
+$prev-wrap-width: 40px;
+$radio-wrap-height: 40px;
+$radio-circle-size: 15px;
+
 .banner {
   overflow: hidden;
   position: relative;
@@ -158,12 +167,14 @@ if (props.botClicked) {
     width: 100%;
     height: 100%;
     display: flex;
+    margin: 0;
+    padding: 0;
   }
 
   .btnSide {
     position: absolute;
     height: 100%;
-    width: var(--prev-wrap-width);
+    width: $prev-wrap-width;
     top: 0;
     display: flex;
     justify-content: center;
@@ -172,29 +183,29 @@ if (props.botClicked) {
   }
 
   .prev {
-    font-size: var(--prev-font-size);
-    color: var(--prev--default-color);
+    font-size: $prev-font-size;
+    color: $prev-default-color;
     left: 0;
 
     &:hover {
-      background-image: linear-gradient(to right, var(--prev--default-color), transparent);
+      background-image: linear-gradient(to right, $prev-default-color, transparent);
 
       .iconfont {
-        color: var(--prev--hover-color);
+        color: $prev-hover-color;
       }
     }
   }
 
   .next {
-    font-size: var(--prev-font-size);
-    color: var(--prev--default-color);
+    font-size: $prev-font-size;
+    color: $prev-default-color;
     right: 0;
 
     &:hover {
-      background-image: linear-gradient(to left, var(--prev--default-color), transparent);
+      background-image: linear-gradient(to left, $prev-default-color, transparent);
 
       .iconfont {
-        color: var(--prev--hover-color);
+        color: $prev-hover-color;
       }
     }
   }
@@ -202,7 +213,7 @@ if (props.botClicked) {
   .bot-radios {
     position: absolute;
     width: 100%;
-    height: var(--radio-wrap-height);
+    height: $radio-wrap-height;
     bottom: 0px;
     display: flex;
     justify-content: center;
@@ -210,10 +221,10 @@ if (props.botClicked) {
 
     .bot-radio {
       margin: 0 5px;
-      width: var(--radio-circle-size);
-      height: var(--radio-circle-size);
+      width: $radio-circle-size;
+      height: $radio-circle-size;
       border-radius: 50%;
-      border: 1px solid var(--radio-border-color);
+      border: 1px solid $radio-border-color;
       cursor: pointer;
     }
   }

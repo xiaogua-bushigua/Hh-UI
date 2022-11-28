@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import './main.css'
 
 import hljs from 'highlight.js/lib/core';
 import 'highlight.js/styles/base16/tomorrow.css'

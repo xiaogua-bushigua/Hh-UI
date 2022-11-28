@@ -59,14 +59,23 @@ const resizeClass = computed(() => {
 
 <template>
   <div class="textWrap">
-    <textarea :cols="cols" :rows="rows" :value="props.text" @input="handleInputEmit"
-      @focus="handleFocusEmit" @blur="handleBlurEmit" :disabled="props.disabled" :class="[disabledClass, resizeClass]"
-      :readonly="props.readonly" :placeholder="props.placeholder" :maxlength="props.maxLen ? props.maxLen : 140"></textarea>
-    <div class="tip" v-show="props.maxLen">{{props.text.length+'/'+props.maxLen}}</div>
+    <textarea :cols="cols" :rows="rows" :value="props.text" @input="handleInputEmit" @focus="handleFocusEmit"
+      @blur="handleBlurEmit" :disabled="props.disabled" :class="[disabledClass, resizeClass]" :readonly="props.readonly"
+      :placeholder="props.placeholder" :maxlength="props.maxLen ? props.maxLen : 140"></textarea>
+    <div class="tip" v-show="props.maxLen">{{ props.text.length + '/' + props.maxLen }}</div>
   </div>
 </template>
 
 <style scoped lang="scss">
+$textarea-font-size: 14px;
+$textarea-font-color: rgb(20, 20, 20);
+$textarea-font-placeholder-color: rgb(114, 114, 114);
+$textarea-border-radius: 5px;
+$textarea-border-color: rgb(180, 180, 180);
+$textarea-border-focus-color: rgb(79, 116, 185);
+$textarea-tip-font-size: 12px;
+$textarea-tip-font-color: rgb(126, 126, 126);
+
 .textWrap {
   display: inline-block;
   position: relative;
@@ -76,18 +85,18 @@ textarea {
   box-sizing: border-box;
   outline: none;
   padding: 8px;
-  border-radius: var(--textarea-border-radius);
-  font-size: var(--textarea-font-size);
+  border-radius: $textarea-border-radius;
+  font-size: $textarea-font-size;
   font-family: auto;
-  color: var(--textarea-font-color);
-  border: 1px solid var(--textarea-border-color);
+  color: $textarea-font-color;
+  border: 1px solid $textarea-border-color;
 
   &:focus {
-    border: 1px solid var(--textarea-border-focus-color);
+    border: 1px solid $textarea-border-focus-color;
   }
 
   &::placeholder {
-    color: var(--textarea-font-placeholder-color);
+    color: $textarea-font-placeholder-color;
   }
 }
 
@@ -95,8 +104,8 @@ textarea {
   position: absolute;
   bottom: 12px;
   right: 12px;
-  font-size: var(--textarea-tip-font-size);
-  color: var(--textarea-tip-font-color);
+  font-size: $textarea-tip-font-size;
+  color: $textarea-tip-font-color;
 }
 
 .Disabled {
@@ -106,6 +115,7 @@ textarea {
     cursor: no-drop;
   }
 }
+
 .Resize {
   resize: none;
 }

@@ -95,138 +95,171 @@ const getIconClass = (type: string, isLoading: boolean) => {
 </template>
 
 <style scoped lang="scss">
+$btn-back-color-default: #fff;
+$btn-back-color-primary: #409eff;
+$btn-back-color-success: #67c23a;
+$btn-back-color-info: #909399;
+$btn-back-color-warning: #e6a23a;
+$btn-back-color-danger: #f56c6c;
+$btn-back-color-default-lighter: #ecf5ff;
+$btn-back-color-default-lighter1: #92c1f0;
+$btn-back-color-primary-lighter: #72abf1;
+$btn-back-color-primary-lighter1: #e5effb;
+$btn-back-color-success-lighter: #a9e17a;
+$btn-back-color-success-lighter1: #e7f6da;
+$btn-back-color-info-lighter: #c9cdd5;
+$btn-back-color-info-lighter1: #f4f6f8;
+$btn-back-color-warning-lighter: #e8b467;
+$btn-back-color-warning-lighter1: #f8f1e8;
+$btn-back-color-danger-lighter: #f88989;
+$btn-back-color-danger-lighter1: #f6e7e7;
+/* 边框 */
+$btn-border-color-default: #dce1ea;
+$btn-border-radius-default: 5px;
+$btn-border-radius: 16px;
+/* 字体 */
+$btn-font-color-default: #7d7e82;
+$btn-font-size-default: 16px;
+$btn-font-size-small: 14px;
+$btn-font-size-large: 18px;
+$btn-font-color-white: #fff;
+/* 尺寸 */
+$btn-small-padding: 6px 12px;
+$btn-middle-padding: 8px 14px;
+$btn-big-padding: 10px 16px;
+
 .btn {
   display: inline-flex;
   align-items: center;
   border: none;
-  background-color: var(--btn-back-color-default);
-  border-radius: var(--btn-border-radius-default);
-  color: var(--btn-font-color-default);
+  background-color: $btn-back-color-default;
+  border-radius: $btn-border-radius-default;
+  color: $btn-font-color-default;
   cursor: pointer;
-  color: var(--btn-font-color-white);
+  color: $btn-font-color-white;
 
   &-default {
-    color: var(--btn-font-color-default);
-    border: 1px solid var(--btn-border-color-default);
+    color: $btn-font-color-default;
+    border: 1px solid $btn-border-color-default;
 
     &:not(.btn-disabled):hover {
-      background-color: var(--btn-back-color-default-lighter);
-      color: var(--btn-back-color-default-lighter1);
-      border: 1px solid var(--btn-back-color-default-lighter1);
+      background-color: $btn-back-color-default-lighter;
+      color: $btn-back-color-default-lighter1;
+      border: 1px solid $btn-back-color-default-lighter1;
     }
 
     &.btn-plain {
       &:not(.btn-disabled):hover {
-        background-color: var(--btn-back-color-default);
-        color: var(--btn-back-color-primary);
-        border: 1px solid var(--btn-back-color-primary);
+        background-color: $btn-back-color-default;
+        color: $btn-back-color-primary;
+        border: 1px solid $btn-back-color-primary;
       }
     }
   }
 
   &-primary {
-    background-color: var(--btn-back-color-primary);
+    background-color: $btn-back-color-primary;
 
     &:not(.btn-disabled):hover {
-      background-color: var(--btn-back-color-primary-lighter);
+      background-color: $btn-back-color-primary-lighter;
     }
 
     &.btn-plain {
-      background-color: var(--btn-back-color-primary-lighter1);
-      border: 1px solid var(--btn-back-color-primary-lighter);
-      color: var(--btn-back-color-primary-lighter);
+      background-color: $btn-back-color-primary-lighter1;
+      border: 1px solid $btn-back-color-primary-lighter;
+      color: $btn-back-color-primary-lighter;
 
       &:not(.btn-disabled):hover {
-        background-color: var(--btn-back-color-primary);
-        color: var(--btn-font-color-white);
-        border: 1px solid var(--btn-back-color-primary);
+        background-color: $btn-back-color-primary;
+        color: $btn-font-color-white;
+        border: 1px solid $btn-back-color-primary;
       }
     }
   }
 
   &-success {
-    background-color: var(--btn-back-color-success);
+    background-color: $btn-back-color-success;
 
     &:not(.btn-disabled):hover {
-      background-color: var(--btn-back-color-success-lighter);
+      background-color: $btn-back-color-success-lighter;
     }
 
     &.btn-plain {
-      background-color: var(--btn-back-color-success-lighter1);
-      border: 1px solid var(--btn-back-color-success-lighter);
-      color: var(--btn-back-color-success-lighter);
+      background-color: $btn-back-color-success-lighter1;
+      border: 1px solid $btn-back-color-success-lighter;
+      color: $btn-back-color-success-lighter;
 
       &:not(.btn-disabled):hover {
-        background-color: var(--btn-back-color-success);
-        color: var(--btn-font-color-white);
-        border: 1px solid var(--btn-back-color-success);
+        background-color: $btn-back-color-success;
+        color: $btn-font-color-white;
+        border: 1px solid $btn-back-color-success;
       }
     }
   }
 
   &-info {
-    background-color: var(--btn-back-color-info);
+    background-color: $btn-back-color-info;
 
     &:not(.btn-disabled):hover {
-      background-color: var(--btn-back-color-info-lighter);
+      background-color: $btn-back-color-info-lighter;
     }
 
     &.btn-plain {
-      background-color: var(--btn-back-color-info-lighter1);
-      border: 1px solid var(--btn-back-color-info-lighter);
-      color: var(--btn-back-color-info-lighter);
+      background-color: $btn-back-color-info-lighter1;
+      border: 1px solid $btn-back-color-info-lighter;
+      color: $btn-back-color-info-lighter;
 
       &:not(.btn-disabled):hover {
-        background-color: var(--btn-back-color-info);
-        color: var(--btn-font-color-white);
-        border: 1px solid var(--btn-back-color-info);
+        background-color: $btn-back-color-info;
+        color: $btn-font-color-white;
+        border: 1px solid $btn-back-color-info;
       }
     }
   }
 
   &-warning {
-    background-color: var(--btn-back-color-warning);
+    background-color: $btn-back-color-warning;
 
     &:not(.btn-disabled):hover {
-      background-color: var(--btn-back-color-warning-lighter);
+      background-color: $btn-back-color-warning-lighter;
     }
 
     &.btn-plain {
-      background-color: var(--btn-back-color-warning-lighter1);
-      border: 1px solid var(--btn-back-color-warning-lighter);
-      color: var(--btn-back-color-warning-lighter);
+      background-color: $btn-back-color-warning-lighter1;
+      border: 1px solid $btn-back-color-warning-lighter;
+      color: $btn-back-color-warning-lighter;
 
       &:not(.btn-disabled):hover {
-        background-color: var(--btn-back-color-warning);
-        color: var(--btn-font-color-white);
-        border: 1px solid var(--btn-back-color-warning);
+        background-color: $btn-back-color-warning;
+        color: $btn-font-color-white;
+        border: 1px solid $btn-back-color-warning;
       }
     }
   }
 
   &-danger {
-    background-color: var(--btn-back-color-danger);
+    background-color: $btn-back-color-danger;
 
     &:not(.btn-disabled):hover {
-      background-color: var(--btn-back-color-danger-lighter);
+      background-color: $btn-back-color-danger-lighter;
     }
 
     &.btn-plain {
-      background-color: var(--btn-back-color-danger-lighter1);
-      border: 1px solid var(--btn-back-color-danger-lighter);
-      color: var(--btn-back-color-danger-lighter);
+      background-color: $btn-back-color-danger-lighter1;
+      border: 1px solid $btn-back-color-danger-lighter;
+      color: $btn-back-color-danger-lighter;
 
       &:not(.btn-disabled):hover {
-        background-color: var(--btn-back-color-danger);
-        color: var(--btn-font-color-white);
-        border: 1px solid var(--btn-back-color-danger);
+        background-color: $btn-back-color-danger;
+        color: $btn-font-color-white;
+        border: 1px solid $btn-back-color-danger;
       }
     }
   }
 }
 
 .btn-round {
-  border-radius: var(--btn-border-radius);
+  border-radius: $btn-border-radius;
 }
 
 .btn-disabled {
@@ -235,18 +268,18 @@ const getIconClass = (type: string, isLoading: boolean) => {
 }
 
 .btn-small {
-  padding: var(--btn-small-padding);
-  font-size: var(--btn-font-size-small);
+  padding: $btn-small-padding;
+  font-size: $btn-font-size-small;
 }
 
 .btn-middle {
-  padding: var(--btn-middle-padding);
-  font-size: var(--btn-font-size-default);
+  padding: $btn-middle-padding;
+  font-size: $btn-font-size-default;
 }
 
 .btn-large {
-  padding: var(--btn-big-padding);
-  font-size: var(--btn-font-size-large);
+  padding: $btn-big-padding;
+  font-size: $btn-font-size-large;
 }
 
 .isLoading {

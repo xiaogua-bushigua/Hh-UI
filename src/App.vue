@@ -6,6 +6,15 @@
 </template>
 
 <style lang="scss">
+:root {
+  --scrollbar-width: 8px;
+  --scrollbar-border-radius: 8px;
+  --scrollbar-back-color: rgba(225, 224, 224, 0.8);
+  --codes-back-color: rgb(226, 236, 234);
+  --codes-line-height: 20px;
+  --codes-font-size: 16px;
+}
+
 * {
   margin: 0;
   padding: 0;
